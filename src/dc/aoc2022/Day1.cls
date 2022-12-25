@@ -1,42 +1,59 @@
 Class dc.aoc2022.Day1 Extends dc.aoc2022.Base
 {
 
-Parameter InputFile = "input1.txt";
+Parameter InputFile = "Day1.txt";
 
-// w ##class(dc.aoc2022.Day1).Run()
-
-ClassMethod Run(verbose = 0) As %Integer
+ClassMethod Run()
 {
-    set stream=..GetInput(..#InputFile)
-    set sum=0
-	while 'stream.AtEnd {
-		set line=stream.ReadLine()
-        set line=line\3-2
-        set sum=sum+line
-        if verbose write "line="_line," ","sum="_sum,!
-    }
-    return sum
+	set part1 = ..Part1()
+	set part2 = ..Part2()
+
+    write part1,!
+    write part2,!
 }
 
-ClassMethod Run2(verbose = 0) As %Integer
+ClassMethod Part1() As %Integer
 {
-    
-    set stream=..GetInput(..#InputFile)
-    set sum=0
+    set stream = ..GetInput(..#InputFile)
+
+    set sum = 0
+    set max = -9999999
 	while 'stream.AtEnd {
-		set line=stream.ReadLine()
-        set fuel=line
-        set full=0
-        for  {
-            set fuel=fuel\3-2
-            quit:fuel<0
-            set full=full+fuel
-            }  
-        set sum=sum+full
-        if verbose write "line="_line," ","sum="_sum,!
+		set line = $zstrip(stream.ReadLine(), "*C")
+		set sum = sum + line
+		set:(sum>max) max = sum
+		set:(line="") sum = 0
     }
-    
-    return sum
+    return max
+}
+
+ClassMethod Part2() As %Integer
+{
+    set stream = ..GetInput(..#InputFile)
+
+    set sum = 0
+    set (a,b,c) = -9999999
+	while 'stream.AtEnd {
+		set line = $zstrip(stream.ReadLine(), "*C")
+		set sum = sum + line
+		if line = "" || stream.AtEnd{
+			if sum >= a {
+				set c = b
+				set b = a
+				set a = sum
+			} else {
+				if sum >= b {
+					set c = b
+					set b = sum
+				} else {
+					set:(sum>=c) c = sum
+				}
+			}
+			set sum = 0
+		}
+    }
+    set result = a + b + c
+    return result
 }
 
 }

@@ -1,11 +1,12 @@
-Class dc.aoc2022.Base
+Class dc.aoc2022.Base Extends %RegisteredObject
 {
 
-Parameter Folder = "/irisdev/app/data/";
+Parameter Folder = "D:\work\_competitions\adventofcode\2022-intersystems\data\";
+
+// Parameter Folder = "/usr/irissys/mgr/user/";
 
 ClassMethod GetInput(fn) As %Stream
 {
-   
     set fn=..#Folder_fn
     set stream = ##Class(%Stream.FileCharacter).%New()
     set sc=stream.LinkToFile(fn)
