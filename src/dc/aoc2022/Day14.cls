@@ -53,7 +53,7 @@ ClassMethod BuildCave(ByRef cave, ByRef height)
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..BuildCave(.cave, .height)
+	do ..BuildCave(.cave, .height)
 
 	set count = 0
 	set hasSettled = 1
@@ -86,7 +86,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-	set t = ..BuildCave(.cave, .height)
+	do ..BuildCave(.cave, .height)
 
 	set height = height + 2
 	for i = 1:1:1000 {

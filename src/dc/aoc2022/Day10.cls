@@ -54,19 +54,19 @@ ClassMethod Part1() As %Integer
 		
 		if op = "noop" {
 			set cycle = cycle + 1
-			set t = ..Check(.result, x, cycle)
-			set t = ..Print(.buffer, cycle, x, width, height)
+			do ..Check(.result, x, cycle)
+			do ..Print(.buffer, cycle, x, width, height)
 		} else {
 			set arg = $piece(line, " ", 2)
 			
 			set cycle = cycle + 1
-			set t = ..Check(.result, x, cycle)
-			set t = ..Print(.buffer, cycle, x, width, height)
+			do ..Check(.result, x, cycle)
+			do ..Print(.buffer, cycle, x, width, height)
 
 			set x = x + arg
 			set cycle = cycle + 1
-			set t = ..Check(.result, x, cycle)
-			set t = ..Print(.buffer, cycle, x, width, height)
+			do ..Check(.result, x, cycle)
+			do ..Print(.buffer, cycle, x, width, height)
 		}
 	}
 	
