@@ -57,7 +57,7 @@ ClassMethod ReadCubes(ByRef cubes, ByRef cubeCount, ByRef d, ByRef map)
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..ReadCubes(.cubes, .cubeCount, .d, .map)
+	do ..ReadCubes(.cubes, .cubeCount, .d, .map)
 	
 	set neighbors = 0
 	for i = 0:1:d {
@@ -84,7 +84,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-    set t = ..ReadCubes(.cubes, .cubeCount, .d, .map)
+    do ..ReadCubes(.cubes, .cubeCount, .d, .map)
 	
 	set visited(0, 0, 0) = 1
 	

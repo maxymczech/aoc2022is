@@ -48,7 +48,7 @@ ClassMethod GetBeacons(ByRef beacons, ByRef beaconCount)
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..GetBeacons(.beacons, .beaconCount)
+	do ..GetBeacons(.beacons, .beaconCount)
 	
 	set targetY = 2000000
 	set xBeaconCount = 0
@@ -166,10 +166,10 @@ ClassMethod Find(x As %Integer, y As %Integer, chunkSize As %Integer, ByRef beac
 			set rup = chunkSize \ 2
 			set ds = (chunkSize / 2)
 			set:(ds'=rup) ds = rup + 1
-			set t = ..Find(x, y, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
-			set t = ..Find(x + ds, y, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
-			set t = ..Find(x, y + ds, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
-			set t = ..Find(x + ds, y + ds, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
+			do ..Find(x, y, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
+			do ..Find(x + ds, y, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
+			do ..Find(x, y + ds, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
+			do ..Find(x + ds, y + ds, ds, .beacons, beaconCount, .notCovered, .notCoveredCount)
 		}
 	}
 	return 1
@@ -177,10 +177,10 @@ ClassMethod Find(x As %Integer, y As %Integer, chunkSize As %Integer, ByRef beac
 
 ClassMethod Part2() As %Integer
 {
-    set t = ..GetBeacons(.beacons, .beaconCount)
+    do ..GetBeacons(.beacons, .beaconCount)
     set notCoveredCount = 0
     
-	set t = ..Find(0, 0, ..#MaxCoord, .beacons, beaconCount, .notCovered, .notCoveredCount)
+	do ..Find(0, 0, ..#MaxCoord, .beacons, beaconCount, .notCovered, .notCoveredCount)
 	write "[DEBUG] Non Covered Regions: ",notCoveredCount,!
 	for k = 1:1:notCoveredCount {
 		set x = notCovered(k, "x")

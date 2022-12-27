@@ -144,7 +144,7 @@ ClassMethod GetRates(ByRef distances, ByRef rates, valve As %String, minutes As 
 				}
 			}
 
-			set t = ..GetRates(.distances, .rates, other, newMinutes, .newLeft, newLeftCount, .newOpened, newOpenedCount)
+			do ..GetRates(.distances, .rates, other, newMinutes, .newLeft, newLeftCount, .newOpened, newOpenedCount)
 		}
 	}
 	return 1
@@ -152,11 +152,11 @@ ClassMethod GetRates(ByRef distances, ByRef rates, valve As %String, minutes As 
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..PrepareInput(.graph, .rates, .distances, .valves, .valvesCount, .nonZeroValves, .nonZeroCount)
+	do ..PrepareInput(.graph, .rates, .distances, .valves, .valvesCount, .nonZeroValves, .nonZeroCount)
 
 	kill ^allRates
 	set ^allRatesCount = 0
-	set t = ..GetRates(.distances, .rates, "AA", 30, .nonZeroValves, nonZeroCount, .opened, 0)
+	do ..GetRates(.distances, .rates, "AA", 30, .nonZeroValves, nonZeroCount, .opened, 0)
 	
 	set bestRate = 0
 	for i = 1:1:^allRatesCount {
@@ -168,11 +168,11 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-	set t = ..PrepareInput(.graph, .rates, .distances, .valves, .valvesCount, .nonZeroValves, .nonZeroCount)
+	do ..PrepareInput(.graph, .rates, .distances, .valves, .valvesCount, .nonZeroValves, .nonZeroCount)
 
 	kill ^allRates
 	set ^allRatesCount = 0
-	set t = ..GetRates(.distances, .rates, "AA", 26, .nonZeroValves, nonZeroCount, .opened, 0)
+	do ..GetRates(.distances, .rates, "AA", 26, .nonZeroValves, nonZeroCount, .opened, 0)
 	
 	set keyCount = 0
 	for i = 1:1:^allRatesCount {
