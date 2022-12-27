@@ -66,7 +66,7 @@ ClassMethod ReadData(ByRef map, ByRef height, ByRef width, ByRef jStart, ByRef p
 
 ClassMethod Part1() As %Integer
 {
-    set t = ..ReadData(.map, .height, .width, .jStart, .path, .pathLength)
+    do ..ReadData(.map, .height, .width, .jStart, .path, .pathLength)
 
 	set x = jStart
 	set y = 0
@@ -141,9 +141,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-    set t = ..ReadData(.map, .height, .width, .jStart, .path, .pathLength)
-    
-    set t = ..ReadData(.map, .height, .width, .jStart, .path, .pathLength)
+    do ..ReadData(.map, .height, .width, .jStart, .path, .pathLength)
 
 	set x = jStart
 	set y = 0

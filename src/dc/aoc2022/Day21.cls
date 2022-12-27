@@ -126,20 +126,20 @@ ClassMethod SolvePart2(ByRef monkeys, name As %String, want As %Integer) As %Int
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..GetMonkeys(.monkeys)	
+	do ..GetMonkeys(.monkeys)
 	return ..Solve(.monkeys, "root")
 }
 
 ClassMethod Part2() As %Integer
 {
-	set t = ..GetMonkeys(.monkeys)	
+	do ..GetMonkeys(.monkeys)
 	
 	if ..HasHumn(.monkeys, monkeys("root", "a")) {
 		set val = ..Solve(.monkeys, monkeys("root", "b"))
-		set result = ..SolvePart2(.monkeys, monkeys("root", "a"), val)
+		do ..SolvePart2(.monkeys, monkeys("root", "a"), val)
 	} else {
 		set val = ..Solve(.monkeys, monkeys("root", "a"))
-		set result = ..SolvePart2(.monkeys, monkeys("root", "b"), val)
+		do ..SolvePart2(.monkeys, monkeys("root", "b"), val)
 	}
 	
 	return ^p2Result

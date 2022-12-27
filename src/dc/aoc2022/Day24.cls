@@ -140,7 +140,7 @@ ClassMethod PathLength(ByRef data, height As %Integer, width As %Integer, iFrom 
 	set step = 1
 	
 	while 1 {
-		set t = ..Simulate(.data, height, width)
+		do ..Simulate(.data, height, width)
 		set nextPossibleLength = 0
 		for pi = 0:1:possibleLength-1 {
 			for mi = 1:1:5 {
@@ -212,7 +212,7 @@ ClassMethod Print(ByRef data, height As %Integer, width As %Integer)
 
 ClassMethod Part1() As %Integer
 {
-    set t = ..ReadData(.data, .height, .width, .jFrom, .jTo)
+    do ..ReadData(.data, .height, .width, .jFrom, .jTo)
     
     set a = ..PathLength(.data, height, width, 0, jFrom, height - 1, jTo)
 
@@ -221,7 +221,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-    set t = ..ReadData(.data, .height, .width, .jFrom, .jTo)
+    do ..ReadData(.data, .height, .width, .jFrom, .jTo)
     
     set a = ..PathLength(.data, height, width, 0, jFrom, height - 1, jTo)
     set b = ..PathLength(.data, height, width, height - 1, jTo, 0, jFrom)

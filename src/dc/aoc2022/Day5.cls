@@ -35,7 +35,6 @@ ClassMethod Part1() As %String
     kill crates
     kill crateCounts
     set li = 1
-    set crateLines = 0
     
     for i = 1:1:9 {
 	    set crateCounts(i) = 0
@@ -44,8 +43,7 @@ ClassMethod Part1() As %String
 	while 'stream.AtEnd {
 		set line = $zstrip(stream.ReadLine(), "*C")
 		if $extract(line, 2) = 1 {
-			set t = ..GetCrates(.lines, li, .crates, .crateCounts)
-			set crateLines = li
+			do ..GetCrates(.lines, li, .crates, .crateCounts)
 		}
 		if $extract(line, 1) = "m" {
 			set n = $piece(line, " ", 2)
@@ -76,7 +74,6 @@ ClassMethod Part2() As %String
     kill crates
     kill crateCounts
     set li = 1
-    set crateLines = 0
     
     for i = 1:1:9 {
 	    set crateCounts(i) = 0
@@ -85,8 +82,7 @@ ClassMethod Part2() As %String
 	while 'stream.AtEnd {
 		set line = $zstrip(stream.ReadLine(), "*C")
 		if $extract(line, 2) = 1 {
-			set t = ..GetCrates(.lines, li, .crates, .crateCounts)
-			set crateLines = li
+			do ..GetCrates(.lines, li, .crates, .crateCounts)
 		}
 		if $extract(line, 1) = "m" {
 			set n = $piece(line, " ", 2)

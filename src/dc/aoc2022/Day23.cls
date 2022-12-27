@@ -115,10 +115,10 @@ ClassMethod Step(ByRef elves, elvesCount As %Integer, step As %Integer) As %Inte
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..ReadElves(.elves, .elvesCount)
+	do ..ReadElves(.elves, .elvesCount)
 
 	for i = 0:1:10-1 {
-		set t = ..Step(.elves, elvesCount, i)
+		do ..Step(.elves, elvesCount, i)
 	}
 	
 	set xMin = elves(1, "x")
@@ -142,7 +142,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-	set t = ..ReadElves(.elves, .elvesCount)
+	do ..ReadElves(.elves, .elvesCount)
 
 	set round = 0
 	while 1 {

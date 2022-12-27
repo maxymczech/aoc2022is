@@ -89,7 +89,7 @@ ClassMethod Walk2(ByRef tree, node As %String, ByRef best, target As %Integer) A
 	}
 	for i = 1:1:tree(node, "childrenCount") {
 	  set k = node _ tree(node, "children", i) _ "/"
-	  set t = ..Walk2(.tree, k, .best, target)
+	  do ..Walk2(.tree, k, .best, target)
 	}
   }
   return 1
@@ -98,10 +98,10 @@ ClassMethod Walk2(ByRef tree, node As %String, ByRef best, target As %Integer) A
 ClassMethod Part1() As %Integer
 {
 	kill tree
-	set t = ..BuildTree(.tree)
+	do ..BuildTree(.tree)
 	
 	set sum = 0
-    set result = ..Walk1(.tree, "/", .sum)
+    do ..Walk1(.tree, "/", .sum)
 
 	return sum
 }
@@ -109,14 +109,14 @@ ClassMethod Part1() As %Integer
 ClassMethod Part2() As %Integer
 {
 	kill tree
-	set t = ..BuildTree(.tree)
+	do ..BuildTree(.tree)
 	
 	set sum = 0
-	set tmp = ..Walk1(.tree, "/", .sum)
+	do ..Walk1(.tree, "/", .sum)
 	
     set best = 9999999999
     set target = 30000000 - (70000000 - tree("/", "size"))
-    set t = ..Walk2(.tree, "/", .best, target)
+    do ..Walk2(.tree, "/", .best, target)
 
 	return best
 }

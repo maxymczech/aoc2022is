@@ -56,7 +56,7 @@ ClassMethod Part1() As %Integer
 		for i=1:1:distance {
 			set hx = hx + dx
 			set hy = hy + dy
-			set f = ..Follow(hx, hy, .tx, .ty)
+			do ..Follow(hx, hy, .tx, .ty)
 		
 			if '$data(visited(tx, ty)) {
 				set visited(tx,ty) = 1
@@ -100,7 +100,7 @@ ClassMethod Part2() As %Integer
 			for j=1:1:9 {
 				set ctx = tx(j)
 				set cty = ty(j)
-				set f = ..Follow(chx, chy, .ctx, .cty)
+				do ..Follow(chx, chy, .ctx, .cty)
 				set (chx, tx(j)) = ctx
 				set (chy, ty(j)) = cty
 			}

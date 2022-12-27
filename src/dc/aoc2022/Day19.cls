@@ -155,10 +155,10 @@ ClassMethod Schedule(ByRef blueprints, bi As %Integer, ByRef q, qi As %Integer, 
 		return 0
 	}
 	
-	set x = ..PushQ(.q, qi, .qLength)
+	do ..PushQ(.q, qi, .qLength)
 	set q(qLength, "timeLeft") = q(qi, "timeLeft") - t - 1
-	set x = ..AdvanceResources(.q, qLength, t + 1)
-	set x = ..BuildBot(.blueprints, bi, .q, qLength, botType)
+	do ..AdvanceResources(.q, qLength, t + 1)
+	do ..BuildBot(.blueprints, bi, .q, qLength, botType)
 	if botType = "ore" { set q(qLength, "botsOre") = q(qLength, "botsOre") + 1 }
 	if botType = "clay" { set q(qLength, "botsClay") = q(qLength, "botsClay") + 1 }
 	if botType = "obs" { set q(qLength, "botsObs") = q(qLength, "botsObs") + 1 }
@@ -183,7 +183,7 @@ ClassMethod Solve(ByRef blueprints, bi As %Integer, timeLeft As %Integer) As %In
 
 	while qLength > 0 {
 		set qi = -1
-		set x = ..PushQ(.q, qLength, .qi)
+		do ..PushQ(.q, qLength, .qi)
 		set qi = 0
 		set qLength = qLength - 1
 		
@@ -228,7 +228,7 @@ ClassMethod Solve(ByRef blueprints, bi As %Integer, timeLeft As %Integer) As %In
 
 ClassMethod Part1() As %Integer
 {
-	set t = ..ReadBlueprints(.blueprints, .blueprintCount)
+	do ..ReadBlueprints(.blueprints, .blueprintCount)
 
 	set sum = 0
 	for i = 1:1:blueprintCount {
@@ -241,7 +241,7 @@ ClassMethod Part1() As %Integer
 
 ClassMethod Part2() As %Integer
 {
-	set t = ..ReadBlueprints(.blueprints, .blueprintCount)
+	do ..ReadBlueprints(.blueprints, .blueprintCount)
 
 	set mul = 1
 	for i = 1:1:3 {
